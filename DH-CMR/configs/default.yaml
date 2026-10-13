@@ -1,0 +1,62 @@
+data:
+  name: mosi
+  path: datasets/mosi/unaligned_50.pkl
+  text_model: pretrained/bert-base-uncased
+  local_files_only: true
+  max_text_length: 50
+  length_policy: max_declared_nonzero
+  normalization_epsilon: 1.0e-6
+  audio_dim: null
+  vision_dim: null
+  label_key: regression_labels
+  sims_class_boundaries: [-0.7, -0.1, 0.1, 0.7]
+model:
+  hidden_dim: 128
+  layers: 2
+  dropout: 0.1
+  sequence_layers: 1
+lora:
+  rank: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules: [query, value]
+reference:
+  anchors: 64
+  global_clusters: 8
+  representatives_per_cluster: 4
+  kmeans_n_init: 10
+hrp:
+  local_neighbors: 4
+  global_topk: 2
+  similarity: cosine
+chm:
+  slots_per_partition: 16
+  retrieval_topk: 2
+  similarity: cosine
+  epsilon: 1.0e-4
+rmoe:
+  experts: 3
+  topk: 1
+  bottleneck_dim: 32
+training:
+  seed: 42
+  seeds: [11, 22, 33, 44, 55]
+  batch_size: 32
+  epochs: 120
+  warmup_epochs: 15
+  warmup_patience: 5
+  patience: 15
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+  balance_weight: 0.01
+  gradient_clip: 1.0
+  scheduler: cosine
+  lr_warmup_ratio: 0.05
+  freeze_encoders_after_warmup: false
+runtime:
+  device: auto
+  precision: fp32
+  workers: 0
+  deterministic: true
+  output_dir: outputs
+variant: full

@@ -1,0 +1,2 @@
+base: ../datasets/mosi.yaml
+variant: static_hypergraph
