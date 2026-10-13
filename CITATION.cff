@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Please cite the DH-CMR manuscript when using this software."
+type: software
+title: "DH-CMR: Dynamic Hypergraph with Conditional Hyperedge Memory and Residual Mixture of Experts for Multimodal Sentiment Analysis"
+version: 1.0.0
+date-released: 2026-10-13
+repository-code: "https://github.com/Novaryn-lab/DH-CMR"
+authors:
+  - family-names: Huang
+    given-names: Bo
+  - family-names: Qin
+    given-names: Ni
+  - family-names: Chen
+    given-names: Xin
+  - family-names: Che
+    given-names: Yannan
+  - family-names: Liu
+    given-names: Jin
+  - family-names: Fujita
+    given-names: Hamido

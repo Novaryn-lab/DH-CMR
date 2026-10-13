@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dh-cmr"
+version = "1.0.0"
+description = "Dynamic Hypergraph with Conditional Hyperedge Memory and Residual Mixture of Experts"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.4,<3",
+  "numpy>=1.24,<3",
+  "PyYAML>=6,<7",
+  "scikit-learn>=1.3,<2",
+  "transformers>=4.44,<5",
+  "peft>=0.12,<1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+dh-cmr-train = "dh_cmr.cli.train:main"
+dh-cmr-evaluate = "dh_cmr.cli.evaluate:main"
+dh-cmr-ablate = "dh_cmr.cli.ablate:main"
+dh-cmr-multiseed = "dh_cmr.cli.multiseed:main"
+dh-cmr-sweep = "dh_cmr.cli.sweep:main"
+dh-cmr-aggregate = "dh_cmr.cli.aggregate:main"
+dh-cmr-inspect-data = "dh_cmr.cli.inspect_data:main"
+dh-cmr-diagnostics = "dh_cmr.cli.diagnostics:main"
+dh-cmr-profile = "dh_cmr.cli.profile:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
